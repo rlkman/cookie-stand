@@ -262,23 +262,6 @@ var startItem = document.getElementById("totalAl");
 startItem.textContent = 'Total: ' +Alki.totalDay + ' cookies';
 
 
-
-
-
-
-
-
-
-
-
-//var lastItem = startItem.lastchild;
-//elText = elText .replace('time:sales', 'FirstNPike.salesDay')
-//startItem.nodeValue = elText;
-
-// firstItem.textContent = 'hey there';
-// lastItem.textContent = "howdy patner"
-
-  //document.write(total);
-
-// console.log(this.cookiesPerHour());
-// Console.log(SalmonCookies.cookiessPerHour());
+var help = [];
+help = document.getElementsByTagName('li');
+document.write(help);
