@@ -1,15 +1,44 @@
-// Object literal
-var FirstNPike = {
-  min: 23,
-  max: 65,
-  avg: 6.3,
-  salesResults: [],
-  totalDay: 0,
-  cookiesPerHour: function() {
-  return Math.round((Math.random() * ( this.max - this.min) + this.min * this.avg));
+'use strict';
+
+function Store(name, min, max, avg) {
+  this.name = name;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.totalDay = 0;
+  this.salesResults = [];
+}
+console.log('object constructor created: ', Store);
+
+Store.prototype.cookiesPerHour = function(){
+return Math.round((Math.random() * ( this.max - this.min) + this.min * this.avg));
+}
+
+Store.prototype.cookiesPerDayArray = function() {
+  console.log('CookiesPerHour output: ', cookiesPerHour);
+  for(var i = 6; i < 20; i++) {
+    this.totalDay += this.cookiesPerHour();
+    this.salesResults.push(this.cookiesPerHour());
+    console.log('HourlyLog for Day: ', this.salesResults)
   }
 }
-for(var i = 6; i < 21; i++) {
+
+var FirstNPike = new Store('First And Pike', 23, 65, 6.3);
+console.log('instatiation of FirstNPike: ', FirstNPike);
+
+var SeaTacAir = new Store('First And Pike', 23, 65, 6.3);
+console.log('instatiation of FirstNPike: ', SeaTacAir);
+
+var SeattleC = new Store('First And Pike', 23, 65, 6.3);
+console.log('instatiation of FirstNPike: ', SeattleC);
+
+var CapitolH = new Store('First And Pike', 23, 65, 6.3);
+console.log('instatiation of FirstNPike: ', CapitolH);
+
+var Alki = new Store('First And Pike', 23, 65, 6.3);
+console.log('instatiation of FirstNPike: ', Alki);
+
+for(var i = 6; i < 20; i++) {
   if(i < 13){
     FirstNPike.totalDay += FirstNPike.cookiesPerHour();
     FirstNPike.salesResults.push(FirstNPike.cookiesPerHour());
