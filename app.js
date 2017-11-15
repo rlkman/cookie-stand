@@ -1,15 +1,63 @@
-// Object literal
-var FirstNPike = {
-  min: 23,
-  max: 65,
-  avg: 6.3,
-  salesResults: [],
-  totalDay: 0,
-  cookiesPerHour: function() {
-  return Math.round((Math.random() * ( this.max - this.min) + this.min * this.avg));
+'use strict';
+
+var shopArray = [];
+var htIds = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"];
+
+function Store(name, min, max, avg) {
+  this.name = name;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.totalDay = 0;
+  this.salesResults = [];
+}
+console.log('object constructor created: ', Store);
+
+Store.prototype.cookiesPerHour = function(){
+return Math.round((Math.random() * ( this.max - this.min) + this.min * this.avg));
+}
+
+Store.prototype.cookiesPerDayArray = function() {
+  console.log('CookiesPerHour output: ', cookiesPerHour);
+  for(var i = 6; i < 20; i++) {
+    this.totalDay += this.cookiesPerHour();
+    this.salesResults.push(this.cookiesPerHour());
+    console.log('HourlyLog for Day: ', this.salesResults)
   }
 }
-for(var i = 6; i < 21; i++) {
+
+// Store.prototype.listSales = function() {
+//   for(var i = 0; i < htIds.length; i++) {
+//     console.log('HTML id label: ', htIds[i]);
+//     console.log('value of day\'s sales: ', this.salesResults[i]);
+//     var startItem = document.getElementById(htIds[i]);
+//     startItem.textContent = ((i+5) + 'am: ' + this.salesResults[i] + ' cookies');
+//   }
+// }
+
+var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
+console.log('instatiation of FirstNPike: ', FirstNPike);
+shopArray.push(FirstNPike);
+
+var SeaTacAir = new Store('SeaTacAir', 3, 24, 1.2);
+console.log('instatiation of SeaTacAir: ', SeaTacAir);
+shopArray.push(SeaTacAir);
+
+var SeattleC = new Store('SeattleC', 11, 38, 3.7);
+console.log('instatiation of SeattleC: ', SeattleC);
+shopArray.push(SeattleC);
+
+var CapitolH = new Store('CapitolH', 20, 38, 2.3);
+console.log('instatiation of CapitolH: ', CapitolH);
+shopArray.push(CapitolH);
+
+var Alki = new Store('Alki', 2, 16, 4.6);
+console.log('instatiation of Alki: ', Alki);
+shopArray.push(Alki);
+
+console.log('ShopArray is: ', shopArray);
+
+for(var i = 6; i < 20; i++) {
   if(i < 13){
     FirstNPike.totalDay += FirstNPike.cookiesPerHour();
     FirstNPike.salesResults.push(FirstNPike.cookiesPerHour());
