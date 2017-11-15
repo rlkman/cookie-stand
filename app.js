@@ -66,45 +66,60 @@ console.log('ShopsArray is: ', shopsArray);
    var tblBody = document.createElement('tbody');
    console.log('Created tbl elt and tbody....here')
 
+   for (var i = 0; i < 7; i++) {
    var trEl = document.createElement('tr');  //create row1
    var tdEl = document.createElement('td');  //create cell1
-   tdEl.textContent = '';
+   if (i === 0) {
+     tdEl.textContent = '';
+   } else if(i < 6) {
+     tdEl.textContent = shopsArray[i-1].name;
+   }
    trEl.appendChild(tdEl);
-   for (var j = 0; j < 14; j++) {                 //j - column cells
+
+   //add top row
+   for (var j = 0; j < 15   ; j++) {                 //j - column cells
      var tdEl = document.createElement('td');     //creating the cell
      console.log('Created table row '+i+' cell '+j)
      tdEl.textContent = storeOpTimes[j];               //populating the cell
      trEl.appendChild(tdEl);                      //appending cell to row
    }
+   tblBody.appendChild(trEl);
+
+   ///rest of the cells
+   for (var j = 0; j < 15   ; j++) {                 //j - column cells
+     var tdEl = document.createElement('td');     //creating the cell
+     console.log('Created table row '+i+' cell '+j)
+     tdEl.textContent = shopsArray[i].salesResults[j];               //populating the cell
+     trEl.appendChild(tdEl);                      //appending cell to row
+   }
    tblBody.appendChild(trEl);                     //appending row to body
- // }
- // tbl.appendChild(tblBody);                      //appending body to table
- // tblEl.appendChild(tbl);
-   // tblBody.appendChild(trEl);
+ // shopsArray[0].salesResults[0]
+
    tbl.appendChild(tblBody);                      //appending body to table
    tblEl.appendChild(tbl);
-   
-
-   // creating all cells
-   for (var i = 0; i < 1; i++) {                   //i - rows
-     console.log('creates a table row....looping')
-     var trEl = document.createElement('tr');
-
-
-
-     for (var j = 0; j < 15; j++) {                 //j - column cells
-       var tdEl = document.createElement('td');     //creating the cell
-       console.log('Created table row '+i+' cell '+j)
-       tdEl.textContent = storeOpTimes[j];               //populating the cell
-       trEl.appendChild(tdEl);                      //appending cell to row
-     }
-     tblBody.appendChild(trEl);                     //appending row to body
-   }
-   tbl.appendChild(tblBody);                      //appending body to table
-   tblEl.appendChild(tbl);                        //appending tbl to table
-   console.log('sets the border attribute of tbl to 2');
-   tbl.setAttribute("border", "2");
+   console.log('sets border attr. to 1');
+   tbl.setAttribute("border", "1");
  }
+}
+
+ //   // creating all cells
+ //   for (var i = 0; i < 1; i++) {                   //i - rows
+ //     console.log('creates a table row....looping')
+ //     var trEl = document.createElement('tr');
+ //
+ //     for (var j = 0; j < 15; j++) {                 //j - column cells
+ //       var tdEl = document.createElement('td');     //creating the cell
+ //       console.log('Created table row '+i+' cell '+j)
+ //       tdEl.textContent = storeOpTimes[j];               //populating the cell
+ //       trEl.appendChild(tdEl);                      //appending cell to row
+ //     }
+ //     tblBody.appendChild(trEl);                     //appending row to body
+ //   }
+ //   tbl.appendChild(tblBody);                      //appending body to table
+ //   tblEl.appendChild(tbl);                        //appending tbl to table
+ //   console.log('sets the border attribute of tbl to 2');
+ //   tbl.setAttribute("border", "2");
+ // }
 
 
   createTbl();
