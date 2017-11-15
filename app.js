@@ -1,5 +1,8 @@
 'use strict';
 
+var shopArray = [];
+var htIds = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"];
+
 function Store(name, min, max, avg) {
   this.name = name;
   this.min = min;
@@ -23,20 +26,36 @@ Store.prototype.cookiesPerDayArray = function() {
   }
 }
 
-var FirstNPike = new Store('First And Pike', 23, 65, 6.3);
+// Store.prototype.listSales = function() {
+//   for(var i = 0; i < htIds.length; i++) {
+//     console.log('HTML id label: ', htIds[i]);
+//     console.log('value of day\'s sales: ', this.salesResults[i]);
+//     var startItem = document.getElementById(htIds[i]);
+//     startItem.textContent = ((i+5) + 'am: ' + this.salesResults[i] + ' cookies');
+//   }
+// }
+
+var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
 console.log('instatiation of FirstNPike: ', FirstNPike);
+shopArray.push(FirstNPike);
 
-var SeaTacAir = new Store('First And Pike', 23, 65, 6.3);
-console.log('instatiation of FirstNPike: ', SeaTacAir);
+var SeaTacAir = new Store('SeaTacAir', 3, 24, 1.2);
+console.log('instatiation of SeaTacAir: ', SeaTacAir);
+shopArray.push(SeaTacAir);
 
-var SeattleC = new Store('First And Pike', 23, 65, 6.3);
-console.log('instatiation of FirstNPike: ', SeattleC);
+var SeattleC = new Store('SeattleC', 11, 38, 3.7);
+console.log('instatiation of SeattleC: ', SeattleC);
+shopArray.push(SeattleC);
 
-var CapitolH = new Store('First And Pike', 23, 65, 6.3);
-console.log('instatiation of FirstNPike: ', CapitolH);
+var CapitolH = new Store('CapitolH', 20, 38, 2.3);
+console.log('instatiation of CapitolH: ', CapitolH);
+shopArray.push(CapitolH);
 
-var Alki = new Store('First And Pike', 23, 65, 6.3);
-console.log('instatiation of FirstNPike: ', Alki);
+var Alki = new Store('Alki', 2, 16, 4.6);
+console.log('instatiation of Alki: ', Alki);
+shopArray.push(Alki);
+
+console.log('ShopArray is: ', shopArray);
 
 for(var i = 6; i < 20; i++) {
   if(i < 13){
