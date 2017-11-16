@@ -12,6 +12,7 @@ function Store(name, min, max, avg) {
   this.salesResults = [];
   shopsArray.push(this);
   this.cookiesPerDayArray();
+  this.createTable();
 }
 console.log('object constructor created: ', Store);
 
@@ -27,6 +28,53 @@ Store.prototype.cookiesPerDayArray = function() {
     //console.log('HourlyLog for Day: ', this.salesResults)
   }
 };
+
+//Scott's code
+Store.prototype.createTable = function() {
+  var tableEl = document.getElementById('store-tbl');
+  var header = this.createTableHead();
+  var body = this.createTableBody();
+  tableEl.appendChild(header);
+  tableEl.appendChild(body);
+};
+
+Store.prototype.createTableHead = function() {
+  var theadEl = document.createElement('thead');
+  var headRow = createTableRow('', storeOpTimes, 'Totals');
+  theadEl.appendChild(headRow);
+  return theadEl;
+};
+
+Store.prototype.createTableBody = function() {
+  var tbodyEl = document.createElement('tbody');
+
+  for(var k = 0; k < shopsArray.length; k++) {
+    var bodyRow = createTableRow(shopsArray[k].name, shopsArray[k].salesResults, shopsArray[k].totalDay);
+    tbodyEl.appendChild(bodyRow);
+  }
+  return tbodyEl;
+};
+
+function createTableRow(verticalHeader, dataPoints, verticalFooter) {
+  var trEl = document.createElement('tr');
+  var tdElOne = document.createElement('td');
+  tdElOne.textContent = verticalHeader;
+  trEl.appendChild(tdElOne);
+
+  for(var j = 0; j < dataPoints.length; j++) {
+    var tdElTwo = document.createElement('td');
+    tdElTwo.textContent = dataPoints[j];
+    trEl.appendChild(tdElTwo);
+  }
+
+  var tdElThree = document.createElement('td');
+  tdElThree.textContent = verticalFooter;
+  trEl.appendChild(tdElThree);
+
+  return trEl;
+}
+//Scott's code
+//createTable();
 
 var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
 console.log('instatiation of FirstNPike: ', FirstNPike);
@@ -50,49 +98,23 @@ console.log('instatiation of Alki: ', Alki);
 
 console.log('ShopsArray is: ', shopsArray);
 
-//Scott's code
-function createTable() {
-  var tableEl = document.getElementById('store-tbl');
-  var header = createTableHead();
-  var body = createTableBody();
-  tableEl.appendChild(header);
-  tableEl.appendChild(body);
+console.log('WE ARE HEEEREEEE!!!');
+
+
+//Event Handling
+//   var newStore = new Store(newStoreName, newMinCust, newMaxCust, newAvg);
+//   console.log('new store added into the array: ', stores);
+
+
+var formEl = document.getElementById('main-form');
+function onSubmit(event){
+  event.preventDefault();
+  console.log('event object Name: ', event.target[0].value);
+  console.log('event object max: ', event.target[1].value);
+  console.log('event object min: ', event.target[2].value);
+  console.log('event object avg: ', event.target[3].value);
+  console.log('the form was submitted');
+  var newShop = new Store(event.target[0].value, event.target[1].value, event.target[2].value, event.target[3].value);
+  console.log('New Shop instatiated and done.', newShop);
 }
-
-function createTableHead() {
-  var theadEl = document.createElement('thead');
-  var headRow = createTableRow('', storeOpTimes, 'Totals');
-  theadEl.appendChild(headRow);
-  return theadEl;
-}
-
-function createTableBody() {
-  var tbodyEl = document.createElement('tbody');
-
-  for(var k = 0; k < shopsArray.length; k++) {
-    var bodyRow = createTableRow(shopsArray[k].name, shopsArray[k].salesResults, shopsArray[k].totalDay);
-    tbodyEl.appendChild(bodyRow);
-  }
-  return tbodyEl;
-}
-
-function createTableRow(verticalHeader, dataPoints, verticalFooter) {
-  var trEl = document.createElement('tr');
-  var tdElOne = document.createElement('td');
-  tdElOne.textContent = verticalHeader;
-  trEl.appendChild(tdElOne);
-
-  for(var j = 0; j < dataPoints.length; j++) {
-    var tdElTwo = document.createElement('td');
-    tdElTwo.textContent = dataPoints[j];
-    trEl.appendChild(tdElTwo);
-  }
-
-  var tdElThree = document.createElement('td');
-  tdElThree.textContent = verticalFooter;
-  trEl.appendChild(tdElThree);
-
-  return trEl;
-}
-//Scott's code
-createTable();
+formEl.addEventListener('submit', onSubmit);
