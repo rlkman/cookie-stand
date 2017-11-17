@@ -1,0 +1,28 @@
+.wrap {
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-color: green;
+}
+body {
+  background-position: center;
+  background-color: gray;
+}
+.pglinks{
+  list-style: none;
+  color: white;
+}
+.pics{
+  border-radius: 50px;
+  border-color: black;
+  margin-left: 50px;
+  margin-right: auto;
+  border-style: outset;
+  padding-left: 50;
+  padding-right: 0:
+}
+table{
+  position
+  width:auto;
+  color:blue;
+}
