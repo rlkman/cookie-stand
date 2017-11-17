@@ -15,22 +15,24 @@
     </ul>
   </section>
   <section>
-  ///////////////////////////////////
- <h3>Salmon Cookies Sales Figures:</h3>
- <table id="store-tbl">
- </section>
+  <h3>Salmon Cookies Sales Figures:</h3>
+  <table id="store-tbl">
+  </section>
 
-<section>
+  <section>
   <p>Enter a new shop here: Name, custMin, custMax and Avg Sales</p>
- <form id="main-form">
-   <input name="shopName" type="text">
-   <input name="custMin" type="number">
-   <input name="custMax" type="number">
-   <input name="avgSales" type="number">
+  <form id="main-form">
+   <label for="location">Location
+   <input id="location" name="shopName" type="text" placeholder="Mercer, WA">
+   <label for="custMax">MaxCust
+   <input name="custMax" name="custMin" type="number" placeholder=500>
+   <label for="custMin">MinCust
+   <input name="custMax" name="custMin" type="number" placeholder=100>
+   <label for="avgSales">AvgSales
+   <input name="avgSales" name="avgSales" type="number" placeholder=2.5>>
    <button type="submit">submit</button>
- </form>
-</section>
-
+  </form>
+  </section>
   <script src="app.js"></script>
 </body>
 </html>

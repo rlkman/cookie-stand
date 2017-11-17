@@ -12,7 +12,7 @@ function Store(name, min, max, avg) {
   this.salesResults = [];
   shopsArray.push(this);
   this.cookiesPerDayArray();
-  this.createTable();
+  //this.createTable();
 }
 console.log('object constructor created: ', Store);
 
@@ -29,7 +29,6 @@ Store.prototype.cookiesPerDayArray = function() {
   }
 };
 
-//Scott's code
 Store.prototype.createTable = function() {
   var tableEl = document.getElementById('store-tbl');
   var header = this.createTableHead();
@@ -73,48 +72,63 @@ function createTableRow(verticalHeader, dataPoints, verticalFooter) {
 
   return trEl;
 }
-//Scott's code
+
 //createTable();
 
 var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
 console.log('instatiation of FirstNPike: ', FirstNPike);
-//FirstNPike.cookiesPerDayArray();
 
 var SeaTacAir = new Store('SeaTacAir', 3, 24, 1.2);
 console.log('instatiation of SeaTacAir: ', SeaTacAir);
-//SeaTacAir.cookiesPerDayArray();
 
 var SeattleC = new Store('SeattleC', 11, 38, 3.7);
 console.log('instatiation of SeattleC: ', SeattleC);
-//SeattleC.cookiesPerDayArray();
 
 var CapitolH = new Store('CapitolH', 20, 38, 2.3);
 console.log('instatiation of CapitolH: ', CapitolH);
-//CapitolH.cookiesPerDayArray();
 
 var Alki = new Store('Alki', 2, 16, 4.6);
 console.log('instatiation of Alki: ', Alki);
-//Alki.cookiesPerDayArray();
+Alki.createTable();
 
 console.log('ShopsArray is: ', shopsArray);
 
-console.log('WE ARE HEEEREEEE!!!');
-
-
 //Event Handling
-//   var newStore = new Store(newStoreName, newMinCust, newMaxCust, newAvg);
-//   console.log('new store added into the array: ', stores);
-
-
 var formEl = document.getElementById('main-form');
 function onSubmit(event){
   event.preventDefault();
   console.log('event object Name: ', event.target[0].value);
+  var nwStore = event.target[0].value;
   console.log('event object max: ', event.target[1].value);
+  var nwCustMax = parseInt(event.target[1].value);
   console.log('event object min: ', event.target[2].value);
+  var nwCustMin = parseInt(event.target[2].value);
   console.log('event object avg: ', event.target[3].value);
+  var nwCustAvg = parseInt(event.target[3].value);
   console.log('the form was submitted');
-  var newShop = new Store(event.target[0].value, event.target[1].value, event.target[2].value, event.target[3].value);
+  var newShop = new Store(nwStore, nwCustMax, nwCustMin, nwCustAvg);
   console.log('New Shop instatiated and done.', newShop);
+  console.log('shopsArray is now: ' ,shopsArray);
+  addTableRow(nwStore, nwStore.salesResults, nwStore.totalDay);
+}
+
+function addTableRow(location, hourlySales, totalSales) {
+  var table = document.getElementById('store-tbl');
+  var trEl = document.createElement('tr');
+  table.appendChild(trEl);
+  var tdElFirst = document.createElement('td');
+  tdElFirst.textContent = location;
+  trEl.appendChild(tdElFirst);//.......Done
+
+  for (var m = 0; m < storeOpTimes.length; m++) {
+    var tdElvalues = document.createElement('td');
+    tdElvalues.textContent = shopsArray[shopsArray.length - 1].salesResults[m];
+    trEl.appendChild(tdElvalues);
+  }
+  var tdElThird = document.createElement('td');
+  tdElThird.textContent = totalSales;
+  trEl.appendChild(tdElThird);
+
+  return trEl;
 }
 formEl.addEventListener('submit', onSubmit);
