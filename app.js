@@ -54,6 +54,25 @@ Store.prototype.createTableBody = function() {
   return tbodyEl;
 };
 
+//Calculates the Grand total sales prediction for Salmon Cookies - not rendered to table yet
+var grandTotal = 0;
+var overallDailyTotal = [];
+var calcOverallDailyTotal = function() {
+  console.log('the number of shops: ', storeOpTimes.length);
+  for(var n = 0; n < storeOpTimes.length; n++) {
+    var total = 0;
+    console.log('the number of hours to be summed: ', shopsArray.length);
+    for (var o = 0; o < shopsArray.length; o++){
+      total = total + shopsArray[o].salesResults[n];
+      console.log('Accumulation of busunesshour: ' + o, total);
+    }
+    grandTotal = grandTotal + total;
+    console.log('Grand Total: ' ,grandTotal);
+    overallDailyTotal.push(total);
+  }
+};
+
+
 function createTableRow(verticalHeader, dataPoints, verticalFooter) {
   var trEl = document.createElement('tr');
   var tdElOne = document.createElement('td');
@@ -74,7 +93,6 @@ function createTableRow(verticalHeader, dataPoints, verticalFooter) {
 }
 
 //createTable();
-
 var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
 console.log('instatiation of FirstNPike: ', FirstNPike);
 
@@ -92,6 +110,8 @@ console.log('instatiation of Alki: ', Alki);
 Alki.createTable();
 
 console.log('ShopsArray is: ', shopsArray);
+calcOverallDailyTotal();
+console.log('Array of hourly totals: ', overallDailyTotal);
 
 //Event Handling
 var formEl = document.getElementById('main-form');
