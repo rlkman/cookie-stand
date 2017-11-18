@@ -12,7 +12,6 @@ function Store(name, min, max, avg) {
   this.salesResults = [];
   shopsArray.push(this);
   this.cookiesPerDayArray();
-  this.createTable();
 }
 console.log('object constructor created: ', Store);
 
@@ -29,23 +28,41 @@ Store.prototype.cookiesPerDayArray = function() {
   }
 };
 
-//Scott's code
-Store.prototype.createTable = function() {
+var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
+console.log('instatiation of FirstNPike: ', FirstNPike);
+
+var SeaTacAir = new Store('SeaTacAir', 3, 24, 1.2);
+console.log('instatiation of SeaTacAir: ', SeaTacAir);
+
+var SeattleC = new Store('SeattleC', 11, 38, 3.7);
+console.log('instatiation of SeattleC: ', SeattleC);
+
+var CapitolH = new Store('CapitolH', 20, 38, 2.3);
+console.log('instatiation of CapitolH: ', CapitolH);
+
+var Alki = new Store('Alki', 2, 16, 4.6);
+console.log('instatiation of Alki: ', Alki);
+
+console.log('ShopsArray is: ', shopsArray);
+
+console.log('WE ARE HEEEREEEE!!!');
+
+var createTable = function() {
   var tableEl = document.getElementById('store-tbl');
-  var header = this.createTableHead();
-  var body = this.createTableBody();
+  var header = createTableHead();
+  var body = createTableBody();
   tableEl.appendChild(header);
   tableEl.appendChild(body);
 };
 
-Store.prototype.createTableHead = function() {
+var createTableHead = function() {
   var theadEl = document.createElement('thead');
   var headRow = createTableRow('', storeOpTimes, 'Totals');
   theadEl.appendChild(headRow);
   return theadEl;
 };
 
-Store.prototype.createTableBody = function() {
+var createTableBody = function() {
   var tbodyEl = document.createElement('tbody');
 
   for(var k = 0; k < shopsArray.length; k++) {
@@ -73,32 +90,8 @@ function createTableRow(verticalHeader, dataPoints, verticalFooter) {
 
   return trEl;
 }
-//Scott's code
-//createTable();
 
-var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
-console.log('instatiation of FirstNPike: ', FirstNPike);
-//FirstNPike.cookiesPerDayArray();
-
-var SeaTacAir = new Store('SeaTacAir', 3, 24, 1.2);
-console.log('instatiation of SeaTacAir: ', SeaTacAir);
-//SeaTacAir.cookiesPerDayArray();
-
-var SeattleC = new Store('SeattleC', 11, 38, 3.7);
-console.log('instatiation of SeattleC: ', SeattleC);
-//SeattleC.cookiesPerDayArray();
-
-var CapitolH = new Store('CapitolH', 20, 38, 2.3);
-console.log('instatiation of CapitolH: ', CapitolH);
-//CapitolH.cookiesPerDayArray();
-
-var Alki = new Store('Alki', 2, 16, 4.6);
-console.log('instatiation of Alki: ', Alki);
-//Alki.cookiesPerDayArray();
-
-console.log('ShopsArray is: ', shopsArray);
-
-console.log('WE ARE HEEEREEEE!!!');
+createTable();
 
 
 //Event Handling
