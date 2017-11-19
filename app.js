@@ -24,9 +24,35 @@ var headerRow = function() {
   tableElt.appendChild(tRowHeaderElt);
 };
 
+var grandTotal = function(array, time) {
+  var total = 0;
+  for (var k = 0; k < array.length; k++) {
+    total += shopsArray[k].salesResults[time];
+  }
+  return total;
+}
+
+var salCooTot = 0;
+var footerRow = function() {
+  var tableElt = document.getElementById('store-tbl');
+  var tRowFooterElt = document.createElement('tr');
+  var cellOneElt = document.createElement('td');
+  tRowFooterElt.appendChild(cellOneElt);
+  cellOneElt.textContent = 'Grand Total';
+  for (var j = 0; j < storeOpTimes.length; j++) {
+    var opTimeCellElt = document.createElement('td');
+    var salCoo = grandTotal(shopsArray, j);
+    salCooTot += salCoo;
+    opTimeCellElt.textContent = (salCoo);
+    tRowFooterElt.appendChild(opTimeCellElt);
+  }
+  var cellTotElt = document.createElement('td');
+  cellTotElt.textContent = salCooTot;
+  tRowFooterElt.appendChild(cellTotElt);
+  tableElt.appendChild(tRowFooterElt);
+};
+
 headerRow();
-
-
 
 function Store(name, min, max, avg) {
   this.name = name;
@@ -88,3 +114,5 @@ var Alki = new Store('Alki', 2, 16, 4.6);
 console.log('instatiation of Alki: ', Alki);
 
 console.log('ShopsArray is: ', shopsArray);
+
+footerRow();
