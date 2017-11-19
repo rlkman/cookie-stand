@@ -30,7 +30,7 @@ var grandTotal = function(array, time) {
     total += shopsArray[k].salesResults[time];
   }
   return total;
-}
+};
 
 var salCooTot = 0;
 var footerRow = function() {
@@ -114,5 +114,26 @@ var Alki = new Store('Alki', 2, 16, 4.6);
 console.log('instatiation of Alki: ', Alki);
 
 console.log('ShopsArray is: ', shopsArray);
+
+//Event Handling
+//console.log('new store added into the array: ', stores);
+var formEl = document.getElementById('main-form');
+function onSubmit(event){
+  event.preventDefault();
+  console.log('event object Name: ', event.target[0].value);
+  console.log('event object max: ', event.target[1].value);
+  console.log('event object min: ', event.target[2].value);
+  console.log('event object avg: ', event.target[3].value);
+  console.log('the form was submitted');
+  //Delete last row - the total row --- inner.HTML
+  var rowCount = document.getElementById('store-tbl').rows.length;
+  document.getElementById('store-tbl').deleteRow(rowCount - 1);
+  console.log('number of rows on table:', rowCount);
+  var newShop = new Store(event.target[0].value, event.target[1].value, event.target[2].value, event.target[3].value);
+  footerRow();
+  console.log('New Shop instatiated and done.', newShop);
+}
+formEl.addEventListener('submit', onSubmit);
+
 
 footerRow();
