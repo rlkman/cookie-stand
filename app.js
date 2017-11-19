@@ -12,6 +12,7 @@ function Store(name, min, max, avg) {
   this.salesResults = [];
   shopsArray.push(this);
   this.cookiesPerDayArray();
+  this.render();
 }
 console.log('object constructor created: ', Store);
 
@@ -26,6 +27,26 @@ Store.prototype.cookiesPerDayArray = function() {
     this.salesResults.push(this.cookiesPerHour());
     //console.log('HourlyLog for Day: ', this.salesResults)
   }
+};
+
+// Good use of a constructor function; style and syntax are correctly implemented
+// Each cookie stand location should have a separate render() method that creates and appends its row to the table
+// The header row and footer row are each created in their own stand-alone function
+// Duplicate code has been removed and DRY principles are evident
+// Working on a non-master branch for the day, with regular commit history. Basically, every time you get something to work, you should do a commit. But you only need to push every couple of hours or so, tops.
+
+Store.prototype.render = function (){
+  var tableElt = document.getElementById('store-tbl');
+  var tRowElt = document.createElement('tr');
+  var cellElt = document.createElement('td');
+  tRowElt.appendChild(cellElt);
+  cellElt.textContent = (this.name);
+  for (var i = 0; i < storeOpTimes.length; i++) {
+    var infoCells = document.createElement('td');
+    infoCells.textContent = this.salesResults[i];
+    tRowElt.appendChild(infoCells);
+  }
+  tableElt.appendChild(tRowElt);
 };
 
 var FirstNPike = new Store('FirstNPike', 23, 65, 6.3);
@@ -47,56 +68,51 @@ console.log('ShopsArray is: ', shopsArray);
 
 console.log('WE ARE HEEEREEEE!!!');
 
-var createTable = function() {
-  var tableEl = document.getElementById('store-tbl');
-  var header = createTableHead();
-  var body = createTableBody();
-  tableEl.appendChild(header);
-  tableEl.appendChild(body);
-};
-
-var createTableHead = function() {
-  var theadEl = document.createElement('thead');
-  var headRow = createTableRow('', storeOpTimes, 'Totals');
-  theadEl.appendChild(headRow);
-  return theadEl;
-};
-
-var createTableBody = function() {
-  var tbodyEl = document.createElement('tbody');
-
-  for(var k = 0; k < shopsArray.length; k++) {
-    var bodyRow = createTableRow(shopsArray[k].name, shopsArray[k].salesResults, shopsArray[k].totalDay);
-    tbodyEl.appendChild(bodyRow);
-  }
-  return tbodyEl;
-};
-
-function createTableRow(verticalHeader, dataPoints, verticalFooter) {
-  var trEl = document.createElement('tr');
-  var tdElOne = document.createElement('td');
-  tdElOne.textContent = verticalHeader;
-  trEl.appendChild(tdElOne);
-
-  for(var j = 0; j < dataPoints.length; j++) {
-    var tdElTwo = document.createElement('td');
-    tdElTwo.textContent = dataPoints[j];
-    trEl.appendChild(tdElTwo);
-  }
-
-  var tdElThree = document.createElement('td');
-  tdElThree.textContent = verticalFooter;
-  trEl.appendChild(tdElThree);
-
-  return trEl;
-}
-
-createTable();
-
-
-//Event Handling
-//   var newStore = new Store(newStoreName, newMinCust, newMaxCust, newAvg);
-//   console.log('new store added into the array: ', stores);
+// var createTable = function() {
+//   var tableEl = document.getElementById('store-tbl');
+//   var header = createTableHead();
+//   var body = createTableBody();
+//   tableEl.appendChild(header);
+//   tableEl.appendChild(body);
+// };
+//
+// var createTableHead = function() {
+//   var theadEl = document.createElement('thead');
+//   var headRow = createTableRow('', storeOpTimes, 'Totals');
+//   theadEl.appendChild(headRow);
+//   return theadEl;
+// };
+//
+// var createTableBody = function() {
+//   var tbodyEl = document.createElement('tbody');
+//
+//   for(var k = 0; k < shopsArray.length; k++) {
+//     var bodyRow = createTableRow(shopsArray[k].name, shopsArray[k].salesResults, shopsArray[k].totalDay);
+//     tbodyEl.appendChild(bodyRow);
+//   }
+//   return tbodyEl;
+// };
+//
+// function createTableRow(verticalHeader, dataPoints, verticalFooter) {
+//   var trEl = document.createElement('tr');
+//   var tdElOne = document.createElement('td');
+//   tdElOne.textContent = verticalHeader;
+//   trEl.appendChild(tdElOne);
+//
+//   for(var j = 0; j < dataPoints.length; j++) {
+//     var tdElTwo = document.createElement('td');
+//     tdElTwo.textContent = dataPoints[j];
+//     trEl.appendChild(tdElTwo);
+//   }
+//
+//   var tdElThree = document.createElement('td');
+//   tdElThree.textContent = verticalFooter;
+//   trEl.appendChild(tdElThree);
+//
+//   return trEl;
+// }
+//
+// createTable();
 
 
 var formEl = document.getElementById('main-form');
