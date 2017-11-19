@@ -26,6 +26,8 @@ var headerRow = function() {
 
 headerRow();
 
+
+
 function Store(name, min, max, avg) {
   this.name = name;
   this.min = min;
@@ -86,65 +88,3 @@ var Alki = new Store('Alki', 2, 16, 4.6);
 console.log('instatiation of Alki: ', Alki);
 
 console.log('ShopsArray is: ', shopsArray);
-
-console.log('WE ARE HEEEREEEE!!!');
-
-// var createTable = function() {
-//   var tableEl = document.getElementById('store-tbl');
-//   var header = createTableHead();
-//   var body = createTableBody();
-//   tableEl.appendChild(header);
-//   tableEl.appendChild(body);
-// };
-//
-// var createTableHead = function() {
-//   var theadEl = document.createElement('thead');
-//   var headRow = createTableRow('', storeOpTimes, 'Totals');
-//   theadEl.appendChild(headRow);
-//   return theadEl;
-// };
-//
-// var createTableBody = function() {
-//   var tbodyEl = document.createElement('tbody');
-//
-//   for(var k = 0; k < shopsArray.length; k++) {
-//     var bodyRow = createTableRow(shopsArray[k].name, shopsArray[k].salesResults, shopsArray[k].totalDay);
-//     tbodyEl.appendChild(bodyRow);
-//   }
-//   return tbodyEl;
-// };
-//
-// function createTableRow(verticalHeader, dataPoints, verticalFooter) {
-//   var trEl = document.createElement('tr');
-//   var tdElOne = document.createElement('td');
-//   tdElOne.textContent = verticalHeader;
-//   trEl.appendChild(tdElOne);
-//
-//   for(var j = 0; j < dataPoints.length; j++) {
-//     var tdElTwo = document.createElement('td');
-//     tdElTwo.textContent = dataPoints[j];
-//     trEl.appendChild(tdElTwo);
-//   }
-//
-//   var tdElThree = document.createElement('td');
-//   tdElThree.textContent = verticalFooter;
-//   trEl.appendChild(tdElThree);
-//
-//   return trEl;
-// }
-//
-// createTable();
-
-
-var formEl = document.getElementById('main-form');
-function onSubmit(event){
-  event.preventDefault();
-  console.log('event object Name: ', event.target[0].value);
-  console.log('event object max: ', event.target[1].value);
-  console.log('event object min: ', event.target[2].value);
-  console.log('event object avg: ', event.target[3].value);
-  console.log('the form was submitted');
-  var newShop = new Store(event.target[0].value, event.target[1].value, event.target[2].value, event.target[3].value);
-  console.log('New Shop instatiated and done.', newShop);
-}
-formEl.addEventListener('submit', onSubmit);
