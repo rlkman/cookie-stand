@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
   <title>Salmon Cookies-Sales</title>
-</head>
-<body>
-  <header>
-    <h1>Pat's Salmon Cookies</h1>
-    <h3>The place for a great bite...!!</h3>
-  </header>
+  <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="wrap">
+      <h1>Pat's Salmon Cookies</h1>
+      <h3>The place for a great bite...!!</h3>
+      <ul class="pglinks">
+        <li><a href="index.html" class="list-items">Home</a></li>
+        <li><a href="sales.html" class="list-items">Sales Information</a></li>
+      </ul>
+    </header>
+    <section>
+      <p>Enter a new shop here: Name, custMin, custMax and Avg Sales:</p>
+      <form id="main-form">
+        <label for="location">Location</label>
+        <input id="location" name="shopName" type="text" placeholder="Mercer, WA">
+        <label for="custMax">MaxCust</label>
+        <input id="custMax" name="custMin" type="number" placeholder=500>
+        <label for="custMin">MinCust</label>
+        <input id="custMax" name="custMin" type="number" placeholder=100>
+        <label for="avgSales">AvgSales</label>
+        <input id="avgSales" name="avgSales" type="number" placeholder=2.5>
+        <label for="Submit New Shop">Submit New Shop</label>
+        <button id="Submit New Shop" type="submit">submit</button>
+      </form>
+      </section>
+      <section id="main-section">
+        <h3>Salmon Cookies Sales Figures:</h3>
+        <table id="store-tbl">
+        </table>
+      </section>
 
-  <section id="main-section">
-    <ul>
-      <li><a href="index.html" class="list-items">Home</a></li>
-      <li><a href="sales.html" class="list-items">Sales Information</a></li>
-    </ul>
-  </section>
+      <section>
+          <h6>Contact Info:</h6>
+          <p>2345 Vines Street</p>
+          <p>Seattle, WA</p>
+          <p>65787</p>
+      </section>
 
-  <section>
-    <p>Enter a new shop here: Name, custMin, custMax and Avg Sales</p>
-    <form id="main-form">
-     <input name="shopName" type="text">
-     <input name="custMin" type="number">
-     <input name="custMax" type="number">
-     <input name="avgSales" type="number">
-     <button type="submit">submit</button>
-    </form>
-  </section>
+      <section>
+        <footer class="wrap">
+        Copyright Pat's Salmon Cookies
+        </footer>
+     </section>
 
-  <section>
-  ///////////////////////////////////
-  <h3>Salmon Cookies Sales Figures:</h3>
-  <table id="store-tbl">
-  </section>
-
-
-  <script src="app.js"></script>
-</body>
+      <script src="app.js"></script>
+  </body>
 </html>

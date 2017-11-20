@@ -1,0 +1,73 @@
+.wrap {
+  text-align: center;
+  background-color: black;
+  color: white;
+  border-color: green;
+}
+
+#main-section {
+  margin-left: 90px;
+  margin-right: 90px;
+  background-position: center;
+  background-color: gray;
+}
+
+body {
+  margin-left: 90px;
+  margin-right: 90px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  max-width: 899px;
+  background-color: gray;
+
+}
+
+.pglinks{
+  background-color: black;
+  border-left: 10px;
+  list-style: none;
+}
+
+#promo{
+  text-align: center;
+}
+
+#shirt{
+  margin-left: 275px;
+}
+
+#homelink{
+  display: inline;
+  background-color: black;
+}
+#saleslink{
+  display: inline;
+  display:inline;
+  margin-left: 498px;
+}
+header ul li{
+  display: inline;
+  list-style: none;
+  color: white;
+}
+
+#salmon{
+  margin-left: auto;
+}
+
+.pics{
+  border-radius: 50px;
+  border-color: black;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: outset;
+}
+
+#main-form{
+  width: auto;
+}
+
+table{
+  width:auto;
+  color:blue;
+}
